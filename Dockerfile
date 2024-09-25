@@ -1,4 +1,4 @@
-FROM 071032557399.dkr.ecr.sa-east-1.amazonaws.com/dockerhub/alpine:3.18
+FROM 071032557399.dkr.ecr.sa-east-1.amazonaws.com/dockerhub/library/alpine:3.18
 
 LABEL "com.github.actions.name"="Helm Set Image Tag Action"
 LABEL "com.github.actions.description"="A Github Action for automatically updating a Helm template image tag"
