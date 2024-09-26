@@ -84,6 +84,17 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.10.7
+    - name: Install dependencies
+      shell: bash
+      run: |
+        sudo add-apt-repository ppa:rmescandon/yq
+        sudo apt update -y
+        sudo apt install -y bash yq patch gcc musl-dev
+        pip install pybump yamale yamllint pyyaml
     - name: Helm set parameter
       env:
         INPUT_VALUES_FILES: ${{ inputs.values_files }}
