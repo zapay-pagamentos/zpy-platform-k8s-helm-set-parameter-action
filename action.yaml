@@ -82,5 +82,23 @@ inputs:
     default: 'false'
 
 runs:
-  using: docker
-  image: Dockerfile
+  using: "composite"
+  steps:
+    - name: Helm set parameter
+      env:
+        INPUT_VALUES_FILE: ${{ inputs.values_files }}
+        INPUT_TAG_KEYS: ${{ inputs.tag_keys }}
+        INPUT_TAG_VALUE: ${{ inputs.tag_value }}
+        INPUT_BUMP_LEVEL: ${{ inputs.bump_level }}
+        INPUT_HELM_DOCS: ${{ inputs.helm_docs }}
+        INPUT_COMMIT_BRANCH: ${{ inputs.commit_branch }}
+        INPUT_COMMIT_TAG: ${{ inputs.commit_tag }}
+        INPUT_COMMIT_MESSAGE: ${{ inputs.commit_message }}
+        INPUT_COMMIT_AND_PUSH: ${{ inputs.commit_and_push }}
+        INPUT_FORCE: ${{ inputs.force }}
+        INPUT_COMMIT_OPTIONS: ${{ inputs.commit_options }}
+        INPUT_VERBOSE: ${{ inputs.verbose }}
+        INPUT_DRY: ${{ inputs.dry }}
+      shell: bash
+      run: |
+        helm-set-parameter.sh
