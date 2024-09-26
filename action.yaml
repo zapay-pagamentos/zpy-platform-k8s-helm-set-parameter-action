@@ -91,9 +91,6 @@ runs:
     - name: Install dependencies
       shell: bash
       run: |
-        sudo add-apt-repository ppa:rmescandon/yq
-        sudo apt update -y
-        sudo apt install -y bash yq patch gcc musl-dev
         pip install pybump yamale yamllint pyyaml
     - name: Helm set parameter
       env:
