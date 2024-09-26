@@ -101,4 +101,6 @@ runs:
         INPUT_DRY: ${{ inputs.dry }}
       shell: bash
       run: |
+        env
+        echo $INPUT_VALUES_FILE
         helm-set-parameter.sh
