@@ -86,7 +86,7 @@ runs:
   steps:
     - name: Helm set parameter
       env:
-        INPUT_VALUES_FILE: ${{ inputs.values_files }}
+        INPUT_VALUES_FILES: ${{ inputs.values_files }}
         INPUT_TAG_KEYS: ${{ inputs.tag_keys }}
         INPUT_TAG_VALUE: ${{ inputs.tag_value }}
         INPUT_BUMP_LEVEL: ${{ inputs.bump_level }}
@@ -101,6 +101,4 @@ runs:
         INPUT_DRY: ${{ inputs.dry }}
       shell: bash
       run: |
-        env
-        echo $INPUT_VALUES_FILE
         helm-set-parameter.sh
